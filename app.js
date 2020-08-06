@@ -1,21 +1,20 @@
-const express = require('express')
-const app = express()
-const puerto = 3000
+const express = require('express');
+const mongoose = require('mongoose');
 
-app.get('/', (req, res) => res.send('¡Hola mundo!'))
+const app = express();
+const puerto = 3000;
 
-app.get('/:urlCorta', (req, res) => {
-  const urlCorta = req.params.urlCorta;
-  switch (urlCorta) {
-    case 'aa':
-      res.redirect('http://www.google.com');
-      break;
+const acortadorDeUrl = require('./rutas/acortadorDeUrl');
 
-    default:
-      res.redirect('http://www.facebook.com');
-      break;
-  }
-  res.send(req.params.urlCorta)
-})
+app.use(express.json());
 
-app.listen(puerto, () => console.log(`Aplicación corriendo en el puerto: ${puerto}`))
+app.use(acortadorDeUrl);
+
+app.use('/', (req, res, next) => {
+  res.status(404).send('Ruta incorrecta');
+});
+
+mongoose.connect('mongodb://localhost:27017/Acortador-de-url',
+  { useUnifiedTopology: true, useNewUrlParser: true });
+
+app.listen(puerto, () => console.log(`Aplicación corriendo en el puerto: ${puerto}`));
