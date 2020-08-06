@@ -6,10 +6,11 @@ const ruta = express.Router();
 const controladorDeRutas = require('../controladores/ruta');
 const baseDeDatos = require('../utilidades/baseDeDatos');
 
-const esRepetida = (urlAcortada) => {
-  if (baseDeDatos.urlAcortadaExiste(urlAcortada)) {
+const esRepetida = async (urlAcortada) => {
+  if (await baseDeDatos.urlAcortadaExiste(urlAcortada)) {
     throw new Error('Ya existe una url corta igual');
   }
+  return true;
 };
 
 ruta.get('/:urlAcortada', controladorDeRutas.redireccionador);

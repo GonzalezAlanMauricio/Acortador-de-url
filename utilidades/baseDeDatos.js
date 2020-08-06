@@ -16,5 +16,7 @@ module.exports.buscarUnaUrl = async (urlAcortada) => {
 
 module.exports.urlAcortadaExiste = async (urlAcortada) => {
   const url = await Url.findOne({ urlAcortada });
+  console.log(`Url: `, url);
+  console.log(`Url: `, !!url);
   return !!url;
 };

@@ -6,6 +6,6 @@ const esquemaDeUrl = new Schema({
   urlOriginal: Schema.Types.String,
   urlAcortada: Schema.Types.String,
   cantidadDeVisitas: Schema.Types.Number,
-});
+}, { timestamps: { createdAt: 'creado_el' } });
 
 module.exports = mongoose.model('Url', esquemaDeUrl);
