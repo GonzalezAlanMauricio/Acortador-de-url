@@ -20,3 +20,7 @@ module.exports.urlAcortadaExiste = async (urlAcortada) => {
   console.log(`Url: `, !!url);
   return !!url;
 };
+
+module.exports.registrarVisita = async (urlAcortada) => {
+  await Url.findOneAndUpdate({ urlAcortada }, { $inc: { cantidadDeVisitas: 1 } });
+};

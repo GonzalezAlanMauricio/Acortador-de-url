@@ -17,6 +17,7 @@ module.exports.redireccionador = async (req, res) => {
   const urlEncontrada = await baseDeDatos.buscarUnaUrl(urlAcortada);
   if (urlEncontrada) {
     console.log('Url: ', urlEncontrada.creado_el);
+    baseDeDatos.registrarVisita(urlAcortada);
     res.redirect(301, urlEncontrada.urlOriginal);
   } else {
     res.status(404).send({ mensaje: 'No existe url registrada' });
