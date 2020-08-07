@@ -12,10 +12,12 @@ module.exports.acortarUrl = async (req, res) => {
 };
 
 module.exports.redireccionador = async (req, res) => {
+  console.log(`Entro`);
   const { urlAcortada } = req.params;
-  const url = await baseDeDatos.buscarUnaUrl(urlAcortada);
-  if (url) {
-    res.redirect(301, url);
+  const urlEncontrada = await baseDeDatos.buscarUnaUrl(urlAcortada);
+  if (urlEncontrada) {
+    console.log('Url: ', urlEncontrada.creado_el);
+    res.redirect(301, urlEncontrada.urlOriginal);
   } else {
     res.status(404).send({ mensaje: 'No existe url registrada' });
   }

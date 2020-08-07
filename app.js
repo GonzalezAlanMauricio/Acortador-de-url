@@ -8,6 +8,12 @@ const acortadorDeUrl = require('./rutas/acortadorDeUrl');
 
 app.use(express.json());
 
+app.set('etag', false);
+app.use((req, res, next) => {
+  res.set('Cache-Control', 'no-store');
+  next();
+});
+
 app.use(acortadorDeUrl);
 
 app.use('/', (req, res, next) => {
