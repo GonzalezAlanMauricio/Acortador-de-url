@@ -42,12 +42,17 @@ module.exports.registrarUsario = async ({
   }
 };
 
-module.exports.correoUsado = async (correo) => {
+module.exports.correoExisteEnLaDB = async (correo) => {
   const usuario = await Usuario.findOne({ correo });
   return !!usuario;
 };
 
-module.exports.aliasUsado = async (alias) => {
+module.exports.aliasExisteEnLaDB = async (alias) => {
   const usuario = await Usuario.findOne({ alias });
   return !!usuario;
+};
+
+module.exports.getUsuario = async (correo) => {
+  const usuario = await Usuario.findOne({ correo });
+  return usuario;
 };
