@@ -5,6 +5,7 @@ const app = express();
 const puerto = 3000;
 
 const acortadorDeUrl = require('./rutas/acortadorDeUrl');
+const rutasDeUsuario = require('./rutas/usuario');
 
 app.use(express.json());
 
@@ -15,6 +16,7 @@ app.use((req, res, next) => {
 });
 
 app.use(acortadorDeUrl);
+app.use('/usuario/', rutasDeUsuario);
 
 app.use('/', (req, res, next) => {
   res.status(404).send('Ruta incorrecta');

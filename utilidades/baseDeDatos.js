@@ -1,4 +1,5 @@
 const Url = require('../modelos/urls');
+const Usuario = require('../modelos/Usuario');
 
 module.exports.guardarNuevaUrl = async (urlOriginal, urlAcortada) => {
   try {
@@ -16,11 +17,37 @@ module.exports.buscarUnaUrl = async (urlAcortada) => {
 
 module.exports.urlAcortadaExiste = async (urlAcortada) => {
   const url = await Url.findOne({ urlAcortada });
-  console.log(`Url: `, url);
-  console.log(`Url: `, !!url);
+  console.log('Url: ', url);
+  console.log('Url: ', !!url);
   return !!url;
 };
 
 module.exports.registrarVisita = async (urlAcortada) => {
-  await Url.findOneAndUpdate({ urlAcortada }, { $inc: { cantidadDeVisitas: 1 } });
+  try {
+    await Url.findOneAndUpdate({ urlAcortada }, { $inc: { cantidadDeVisitas: 1 } });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.registrarUsario = async ({
+  nombre, apellido, alias, correo, hashDeContra,
+}) => {
+  try {
+    await Usuario.create({
+      nombre, apellido, alias, correo, hashDeContra,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+module.exports.correoUsado = async (correo) => {
+  const usuario = await Usuario.findOne({ correo });
+  return !!usuario;
+};
+
+module.exports.aliasUsado = async (alias) => {
+  const usuario = await Usuario.findOne({ alias });
+  return !!usuario;
 };
