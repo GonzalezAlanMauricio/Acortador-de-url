@@ -9,9 +9,7 @@ const esquemaDeUsuario = new Schema({
   correo: Schema.Types.String,
   hashDeContra: Schema.Types.String,
   urls: [{
-    urlId: mongoose.Schema.Types.ObjectId,
-    urlOriginal: Schema.Types.String,
-    urlAcortada: Schema.Types.String,
+    urlId: { type: mongoose.Schema.Types.ObjectId, ref: 'Url' },
   }],
 }, { timestamps: { createdAt: 'creado_el' } });
 

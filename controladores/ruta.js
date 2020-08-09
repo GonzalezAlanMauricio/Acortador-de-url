@@ -7,16 +7,19 @@ module.exports.acortarUrl = async (req, res) => {
     return res.status(400).json({ errores: errores.array() });
   }
   const { urlOriginal, urlAcortada } = req.body;
-  baseDeDatos.guardarNuevaUrl(urlOriginal, urlAcortada);
-  return res.status(200).send({ mensaje: 'url creada', urlOriginal, urlAcortada });
+  const { correoDeUsuario } = req;
+  try {
+    baseDeDatos.guardarNuevaUrl(urlOriginal, urlAcortada, correoDeUsuario);
+    return res.status(200).send({ mensaje: 'url creada', urlOriginal, urlAcortada });
+  } catch (error) {
+    res.status(500).send({ mensaje: 'El servidor tiene un error, lo suolucionaremos en un momento' });
+  }
 };
 
 module.exports.redireccionador = async (req, res) => {
-  console.log(`Entro`);
   const { urlAcortada } = req.params;
   const urlEncontrada = await baseDeDatos.buscarUnaUrl(urlAcortada);
   if (urlEncontrada) {
-    console.log('Url: ', urlEncontrada.creado_el);
     baseDeDatos.registrarVisita(urlAcortada);
     res.redirect(301, urlEncontrada.urlOriginal);
   } else {

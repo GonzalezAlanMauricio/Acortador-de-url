@@ -4,7 +4,7 @@ const { body } = require('express-validator');
 const ruta = express.Router();
 
 const controladorDeUsuario = require('../controladores/usuario');
-const estaLogueado = require('../middlewares/estaLogueado').estaLogueado;
+const { estaLogueado } = require('../middlewares/estaLogueado');
 const baseDeDatos = require('../utilidades/baseDeDatos');
 
 const correoEsUnico = async (correo) => {
@@ -27,7 +27,6 @@ const aliasEsUnico = async (alias) => {
   }
   return true;
 };
-
 
 ruta.post('/registrar',
   body('correo').isEmail().withMessage('Es necesario un correo valido'),

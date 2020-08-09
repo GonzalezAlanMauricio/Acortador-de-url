@@ -39,7 +39,6 @@ module.exports.loginDeUsuario = async (req, res) => {
       res.status(403).send({ mensaje: 'contraseña incorrecta' });
     }
   } catch (error) {
-    console.log(error);
     res.status(500).send({ mensaje: 'El servidor tiene un error, lo suolucionaremos en un momento' });
   }
 };

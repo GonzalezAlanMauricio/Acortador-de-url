@@ -3,6 +3,8 @@ const { body } = require('express-validator');
 
 const ruta = express.Router();
 
+const { estaLogueado } = require('../middlewares/estaLogueado');
+
 const controladorDeRutas = require('../controladores/ruta');
 const baseDeDatos = require('../utilidades/baseDeDatos');
 
@@ -15,7 +17,7 @@ const esRepetida = async (urlAcortada) => {
 
 ruta.get('/:urlAcortada', controladorDeRutas.redireccionador);
 
-ruta.post('/acortarUrl',
+ruta.post('/acortarUrl', estaLogueado,
   body('urlOriginal').isURL({
     protocols: ['http', 'https'],
     require_tld: true,

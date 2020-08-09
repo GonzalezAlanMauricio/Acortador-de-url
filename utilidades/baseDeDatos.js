@@ -1,12 +1,17 @@
 const Url = require('../modelos/urls');
 const Usuario = require('../modelos/Usuario');
 
-module.exports.guardarNuevaUrl = async (urlOriginal, urlAcortada) => {
+module.exports.guardarNuevaUrl = async (urlOriginal, urlAcortada, correoDeUsuario) => {
   try {
-    const nuevaUrl = new Url({ urlOriginal, urlAcortada, cantidadDeVisitas: 0 });
+    const usuarioCreador = await Usuario.findOne({ correo: correoDeUsuario });
+    const nuevaUrl = new Url({
+      urlOriginal, urlAcortada, cantidadDeVisitas: 0, usuarioCreador: usuarioCreador._id,
+    });
     await nuevaUrl.save();
+    // const urlsActualizadas = usuarioCreador.urls.push({ urlId: nuevaUrl._id });
+    await Usuario.findOneAndUpdate({ correo: usuarioCreador }, { $push: { urls: nuevaUrl } });
   } catch (error) {
-    console.error('Error: ', error);
+    throw new Error('Error en el servidor, lo solucionaremos pronto');
   }
 };
 
@@ -17,8 +22,6 @@ module.exports.buscarUnaUrl = async (urlAcortada) => {
 
 module.exports.urlAcortadaExiste = async (urlAcortada) => {
   const url = await Url.findOne({ urlAcortada });
-  console.log('Url: ', url);
-  console.log('Url: ', !!url);
   return !!url;
 };
 
