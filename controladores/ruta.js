@@ -12,7 +12,7 @@ module.exports.acortarUrl = async (req, res) => {
     baseDeDatos.guardarNuevaUrl(urlOriginal, urlAcortada, correoDeUsuario);
     return res.status(200).send({ mensaje: 'url creada', urlOriginal, urlAcortada });
   } catch (error) {
-    res.status(500).send({ mensaje: 'El servidor tiene un error, lo suolucionaremos en un momento' });
+    res.status(500).send({ mensaje: 'El servidor tiene un error, lo solucionaremos en un momento' });
   }
 };
 

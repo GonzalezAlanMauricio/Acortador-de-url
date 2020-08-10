@@ -32,12 +32,12 @@ ruta.post('/registrar',
   body('correo').isEmail().withMessage('Es necesario un correo valido'),
   body('correo').custom(correoEsUnico),
   body('contra').isLength({ min: 4 })
-    .withMessage('Es necesario una contraseña de almenos 4 caracteres'),
-  body('nombre').isAlpha().withMessage('Solo se permiten caracteres alfabeticos'),
-  body('apellido').isAlpha().withMessage('Solo se permiten caracteres alfabeticos'),
-  body('alias').isAlphanumeric().withMessage('Solo se permiten caracteres alfanumericos')
+    .withMessage('Es necesario una contraseña de al menos 4 caracteres'),
+  body('nombre').isAlpha().withMessage('Solo se permiten caracteres alfabéticos'),
+  body('apellido').isAlpha().withMessage('Solo se permiten caracteres alfabéticos'),
+  body('alias').isAlphanumeric().withMessage('Solo se permiten caracteres alfanuméricos')
     .isLength({ min: 4 })
-    .withMessage('Es necesario una longitud minima de 4 caracteres'),
+    .withMessage('Es necesario una longitud mínima de 4 caracteres'),
   body('alias').custom(aliasEsUnico),
   controladorDeUsuario.registrarUsuario);
 module.exports = ruta;

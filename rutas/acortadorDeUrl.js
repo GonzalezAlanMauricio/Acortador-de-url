@@ -33,7 +33,7 @@ ruta.post('/acortarUrl', estaLogueado,
       'La url tiene que tener un protocolo (http o https). Ejemplo de una url valida: '
       + 'https://s-media-cache-ak0.pinimg.com/originals/90/56/aa/9056aa5af4a553065772183eda26b33e.jpg',
     ), body('urlAcortada').isAlphanumeric()
-      .withMessage('La url solo puede contener caracteres alfanumericos'),
+      .withMessage('La url solo puede contener caracteres alfanuméricos'),
   body('urlAcortada').custom(esRepetida),
   controladorDeRutas.acortarUrl);
 

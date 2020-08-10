@@ -35,7 +35,7 @@ module.exports.registrarVisita = async (urlAcortada) => {
   }
 };
 
-module.exports.registrarUsario = async ({
+module.exports.registrarUsuario = async ({
   nombre, apellido, alias, correo, hashDeContra,
 }) => {
   try {
@@ -62,6 +62,6 @@ module.exports.getUsuario = async (correo) => {
     const usuario = await Usuario.findOne({ correo }).populate({ path: 'urls' });
     return usuario;
   } catch (error) {
-    throw new Error('El servidor fallo, en unos momoentos lo arreglaremos');
+    throw new Error('El servidor fallo, en unos momentos lo arreglaremos');
   }
 };

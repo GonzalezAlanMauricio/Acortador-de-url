@@ -1,13 +1,19 @@
-### To do
+# To do
 
+## Backend
 [ ] Crear indice para urlAcortada
-[ ] Preguntar por promoción de TIC
+[x] Preguntar por promoción de TIC
 [ ] Agregara cors
-[ ] crear documentacion
-[ ] Agregar timestamp
-[ ] Agregar bloqueo de contraseña a los 3 intentos y recuperacion
+[ ] crear documentación
+[x] Agregar timestamp
+[ ] Agregar bloqueo de contraseña a los 3 intentos y recuperación
 [ ] Mensaje adecuado para contraseña incorrecta
 [ ] Mensajes uniformes
+[ ] Mensajes al correo para confirmar correo
 [ ] Documentación
-[ ] Ortografia
 [ ] Tests
+[ ] Ortografía
+
+
+## Frontend
+[ ] login
