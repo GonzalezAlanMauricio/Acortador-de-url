@@ -45,13 +45,17 @@ module.exports.loginDeUsuario = async (req, res) => {
 
 module.exports.perfil = async (req, res) => {
   const { correoDeUsuario } = req;
-  const usuario = await baseDeDatos.getUsuario(correoDeUsuario);
-  res.send({
-    nombre: usuario.nombre,
-    apellido: usuario.apellido,
-    alias: usuario.alias,
-    correo: usuario.correo,
-    urls: usuario.urls,
-    creado: usuario.creado_el,
-  });
+  try {
+    const usuario = await baseDeDatos.getUsuario(correoDeUsuario);
+    res.send({
+      nombre: usuario.nombre,
+      apellido: usuario.apellido,
+      alias: usuario.alias,
+      correo: usuario.correo,
+      urls: usuario.urls,
+      creado: usuario.creado_el,
+    });
+  } catch (error) {
+    res.status(500).send({ mensaje: 'El servidor tiene un error, lo suolucionaremos en un momento' });
+  }
 };

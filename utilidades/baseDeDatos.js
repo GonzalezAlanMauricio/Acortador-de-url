@@ -8,8 +8,10 @@ module.exports.guardarNuevaUrl = async (urlOriginal, urlAcortada, correoDeUsuari
       urlOriginal, urlAcortada, cantidadDeVisitas: 0, usuarioCreador: usuarioCreador._id,
     });
     await nuevaUrl.save();
-    // const urlsActualizadas = usuarioCreador.urls.push({ urlId: nuevaUrl._id });
-    await Usuario.findOneAndUpdate({ correo: usuarioCreador }, { $push: { urls: nuevaUrl } });
+    const idDeNuevaUrl = await Url.findOne({ urlAcortada });
+    await Usuario.updateOne(
+      { correo: usuarioCreador.correo }, { $push: { urls: idDeNuevaUrl } },
+    );
   } catch (error) {
     throw new Error('Error en el servidor, lo solucionaremos pronto');
   }
@@ -56,6 +58,10 @@ module.exports.aliasExisteEnLaDB = async (alias) => {
 };
 
 module.exports.getUsuario = async (correo) => {
-  const usuario = await Usuario.findOne({ correo });
-  return usuario;
+  try {
+    const usuario = await Usuario.findOne({ correo }).populate({ path: 'urls' });
+    return usuario;
+  } catch (error) {
+    throw new Error('El servidor fallo, en unos momoentos lo arreglaremos');
+  }
 };

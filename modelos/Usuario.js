@@ -8,9 +8,7 @@ const esquemaDeUsuario = new Schema({
   alias: Schema.Types.String,
   correo: Schema.Types.String,
   hashDeContra: Schema.Types.String,
-  urls: [{
-    urlId: { type: mongoose.Schema.Types.ObjectId, ref: 'Url' },
-  }],
+  urls: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Url' }],
 }, { timestamps: { createdAt: 'creado_el' } });
 
 module.exports = mongoose.model('Usuario', esquemaDeUsuario);
