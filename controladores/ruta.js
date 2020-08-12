@@ -4,6 +4,7 @@ const baseDeDatos = require('../utilidades/baseDeDatos');
 module.exports.acortarUrl = async (req, res) => {
   const errores = validationResult(req);
   if (!errores.isEmpty()) {
+    console.log(`errr`, errores);
     return res.status(400).json({ errores: errores.array() });
   }
   const { urlOriginal, urlAcortada } = req.body;
@@ -12,6 +13,7 @@ module.exports.acortarUrl = async (req, res) => {
     baseDeDatos.guardarNuevaUrl(urlOriginal, urlAcortada, correoDeUsuario);
     return res.status(200).send({ mensaje: 'url creada', urlOriginal, urlAcortada });
   } catch (error) {
+    console.log(error);
     res.status(500).send({ mensaje: 'El servidor tiene un error, lo solucionaremos en un momento' });
   }
 };

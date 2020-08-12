@@ -27,3 +27,5 @@ mongoose.connect('mongodb://localhost:27017/Acortador-de-url',
   { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 app.listen(puerto, () => console.log(`Aplicación corriendo en el puerto: ${puerto}`));
+
+module.exports = app;

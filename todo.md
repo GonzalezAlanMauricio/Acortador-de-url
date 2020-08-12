@@ -14,7 +14,12 @@
 - [ ] Mensajes uniformes
 - [ ] Mensajes al correo para confirmar correo
 - [ ] Documentación
+- [x] Buscar cuando hacer tests
 - [ ] Tests
+- [x] Tests: no url duplicada
+- [ ] Tests: redireccionar correctamente
+- [x] Tests: error url no existente
+- [x] Tests: 404
 - [x] Ortografía
 
 

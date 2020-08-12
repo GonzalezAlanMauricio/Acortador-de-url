@@ -13,6 +13,7 @@ module.exports.guardarNuevaUrl = async (urlOriginal, urlAcortada, correoDeUsuari
       { correo: usuarioCreador.correo }, { $push: { urls: idDeNuevaUrl } },
     );
   } catch (error) {
+    console.log(error);
     throw new Error('Error en el servidor, lo solucionaremos pronto');
   }
 };
@@ -32,6 +33,7 @@ module.exports.registrarVisita = async (urlAcortada) => {
     await Url.findOneAndUpdate({ urlAcortada }, { $inc: { cantidadDeVisitas: 1 } });
   } catch (error) {
     console.log(error);
+    console.log(error);
   }
 };
 
@@ -43,6 +45,7 @@ module.exports.registrarUsuario = async ({
       nombre, apellido, alias, correo, hashDeContra,
     });
   } catch (error) {
+    console.log(error);
     console.log(error);
   }
 };
@@ -62,6 +65,7 @@ module.exports.getUsuario = async (correo) => {
     const usuario = await Usuario.findOne({ correo }).populate({ path: 'urls' });
     return usuario;
   } catch (error) {
+    console.log(error);
     throw new Error('El servidor fallo, en unos momentos lo arreglaremos');
   }
 };

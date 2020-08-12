@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports.estaLogueado = (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
-    return res.status(404).send({ mensaje: 'Es necesario enviar un token en la cabecera' });
+    return res.status(403).send({ mensaje: 'Es necesario enviar un token en la cabecera' });
   }
   try {
     jwt.verify(token, process.env.CONTRA_SECRETA_DE_JWT);
@@ -11,6 +11,7 @@ module.exports.estaLogueado = (req, res, next) => {
     req.correoDeUsuario = decodificacion.correo;
     next();
   } catch (error) {
-    return res.status(404).send({ mensaje: 'El token es incorrecto o expiro' });
+    console.log(error);
+    return res.status(403).send({ mensaje: 'El token es incorrecto o expiro' });
   }
 };
