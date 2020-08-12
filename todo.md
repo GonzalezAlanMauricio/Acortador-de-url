@@ -4,7 +4,7 @@
 - [x] Crear indice para urlAcortada
 - [x] Preguntar por promoción de TIC
 - [x] Preguntar por final de IO
-- [ ] Agregar cors
+- [x] Agregar cors
 - [ ] Crear documentación
 - [x] Agregar timestamp
 - [ ] Agregar bloqueo de contraseña a los 3 intentos
@@ -13,11 +13,10 @@
 - [ ] Mensaje adecuado para contraseña incorrecta
 - [ ] Mensajes uniformes
 - [ ] Mensajes al correo para confirmar correo
-- [ ] Documentación
 - [x] Buscar cuando hacer tests
-- [ ] Tests
+- [x] Tests
 - [x] Tests: no url duplicada
-- [ ] Tests: redireccionar correctamente
+- [x] Tests: redireccionar correctamente
 - [x] Tests: error url no existente
 - [x] Tests: 404
 - [x] Ortografía

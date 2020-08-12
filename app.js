@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
@@ -15,6 +16,8 @@ app.use((req, res, next) => {
   res.set('Cache-Control', 'no-store');
   next();
 });
+
+app.use(cors());
 
 app.use(acortadorDeUrl);
 app.use('/usuario/', rutasDeUsuario);
