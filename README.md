@@ -1,6 +1,6 @@
 # **Documentación de la api de acortador de urls**
 
-Está es una api para acortar urls. El link de la api es []().
+Está es una api para acortar urls. El link de la api es [https://acdu.herokuapp.com/](acdu.herokuapp.com/).
 
 ## Advertencias
 Está api está en una etapa de pruebas.
@@ -12,7 +12,7 @@ Está api está en una etapa de pruebas.
 
 CONTRA_SECRETA_DE_JWT="una contraseña segura"
 URI_MONGODB="url de la base de datos de mongodb".
-PUERTO=número del puerto donde querés correr el servidor.
+PORT=número del puerto donde querés correr el servidor.
 
 3. npm install
 4. npm run dev (para pruebas) o npm run test (para tests)
@@ -23,7 +23,7 @@ PUERTO=número del puerto donde querés correr el servidor.
 
 Para poder acortar una url es necesario estar registrado y logueado. Para registrarse se tiene que usar el siguiente end point:
 #### Link:
->[]()
+>[https://acdu.herokuapp.com/usuario/registrar/](acdu.herokuapp.com/usuario/registrar/)
 #### Metodo
 >**POST**
 #### Headers:
@@ -60,7 +60,7 @@ Es un json que tiene que tener los siguientes campos
 
 Para poder acortar una url es necesario estar registrado y logueado. Para registrarse se tiene que usar el siguiente end point:
 #### Link:
->[]()
+>[https://acdu.herokuapp.com/usuario/login/](acdu.herokuapp.com/usuario/login/)
 #### Metodo
 >**POST**
 #### Headers:
@@ -92,7 +92,7 @@ Es un json que tiene que tener los siguientes campos
 
 Para poder acortar una url es necesario estar registrado y logueado. Para acortar una url se tiene que usar el siguiente link:
 #### Link:
->[]()
+>[https://acdu.herokuapp.com/acortarUrl/](acdu.herokuapp.com/acortarUrl/)
 #### Metodo
 >**POST**
 #### Headers:
@@ -123,7 +123,7 @@ Es un json que tiene que tener los siguientes campos
 
 Para poder acceder a una url no es necesario estar registrado.
 #### Link:
->[]()
+>[https://acdu.herokuapp.com/<nombre de la url acortada>](acdu.herokuapp.com/<nombre de la url acortada>)
 #### Metodo
 >**GET**
 #### Headers:
@@ -144,7 +144,7 @@ Para poder acceder a una url no es necesario estar registrado.
 
 Para poder ver el perfil propio es necesario estar registrado y logueado. Para obtener los datos del perfil se accede a:
 #### Link:
->[]()
+>[https://acdu.herokuapp.com/usuario/perfil](acdu.herokuapp.com/usuario/perfil)
 #### Metodo
 >**GET**
 #### Headers:
