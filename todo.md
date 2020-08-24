@@ -9,6 +9,7 @@
 - [x] Agregar timestamp
 - [ ] Agregar bloqueo de contraseña a los 3 intentos
 - [ ] Recuperación de contraseña
+- [ ] Bug del token invalido da un 500
 - [ ] Cambio de contraseña
 - [ ] Mensaje adecuado para contraseña incorrecta
 - [ ] Mensajes uniformes
@@ -23,10 +24,14 @@
 
 
 ## Frontend
-- [ ] NavBar
-- [ ] login
-- [ ] Perfil
-- [ ] Crear Url
-- [ ] Error 500
-- [ ] Error 404
+- [x] NavBar
+- [x] Landing
+- [x] login
+- [x] Perfil
+- [x] Crear Url
+- [x] Error 500
+- [x] Error 404
+- [ ] Form para enviar mensaje
+- [ ] Agregar link a los href
+- [ ] link para mandar mensajes apretando el boton de gmail
 - [ ] Conectar con el backend

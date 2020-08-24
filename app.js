@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const puerto = 3000;
+const puerto = process.env.PUERTO;
 
 const acortadorDeUrl = require('./rutas/acortadorDeUrl');
 const rutasDeUsuario = require('./rutas/usuario');
@@ -26,7 +26,7 @@ app.use('/', (req, res, next) => {
   res.status(404).send('Ruta incorrecta');
 });
 
-mongoose.connect('mongodb://localhost:27017/Acortador-de-url',
+mongoose.connect(process.env.URI_MONGODB,
   { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false });
 
 app.listen(puerto, () => console.log(`Aplicación corriendo en el puerto: ${puerto}`));

@@ -4,7 +4,7 @@ const baseDeDatos = require('../utilidades/baseDeDatos');
 module.exports.acortarUrl = async (req, res) => {
   const errores = validationResult(req);
   if (!errores.isEmpty()) {
-    console.log(`errr`, errores);
+    console.log('errr', errores);
     return res.status(400).json({ errores: errores.array() });
   }
   const { urlOriginal, urlAcortada } = req.body;
@@ -20,11 +20,16 @@ module.exports.acortarUrl = async (req, res) => {
 
 module.exports.redireccionador = async (req, res) => {
   const { urlAcortada } = req.params;
-  const urlEncontrada = await baseDeDatos.buscarUnaUrl(urlAcortada);
-  if (urlEncontrada) {
-    baseDeDatos.registrarVisita(urlAcortada);
-    res.redirect(301, urlEncontrada.urlOriginal);
-  } else {
-    res.status(404).send({ mensaje: 'No existe url registrada' });
+  try {
+    const urlEncontrada = await baseDeDatos.buscarUnaUrl(urlAcortada);
+    if (urlEncontrada) {
+      baseDeDatos.registrarVisita(urlAcortada);
+      res.redirect(301, urlEncontrada.urlOriginal);
+    } else {
+      res.status(404).send({ mensaje: 'No existe url registrada' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({ mensaje: 'El servidor tiene un error, lo solucionaremos en un momento' });
   }
 };

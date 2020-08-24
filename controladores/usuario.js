@@ -48,7 +48,7 @@ module.exports.perfil = async (req, res) => {
   const { correoDeUsuario } = req;
   try {
     const usuario = await baseDeDatos.getUsuario(correoDeUsuario);
-    res.send({
+    res.status(200).send({
       nombre: usuario.nombre,
       apellido: usuario.apellido,
       alias: usuario.alias,
